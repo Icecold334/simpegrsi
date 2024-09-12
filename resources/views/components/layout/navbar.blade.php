@@ -1,4 +1,4 @@
-    <header class="z-40 fixed w-full">
+    <header class="z-40 sm:z-50 fixed w-full">
         <nav class="bg-primary-100 border-gray-200 px-2 lg:px-6 py-5 dark:bg-gray-800 shadow-2xl">
             <div class="flex flex-wrap justify-between items-center mx-3">
                 <div class="flex">
@@ -9,9 +9,10 @@
                         <i class="fa-solid fa-bars"></i>
                     </button>
                     <a href="/" class="flex items-center">
-                        {{-- <img src="{{ asset('assets/img/logo.png') }}" class="mr-3 h-6 sm:h-9" alt="Logo" /> --}}
+                        <img src="{{ asset('assets/img/logo.png') }}" class="mr-3 h-6 sm:h-9 hidden sm:flex"
+                            alt="Logo" />
                         <span
-                            class="self-center  sm:ms-60 text-[1.5rem] sm:text-xl font-bold whitespace-nowrap text-primary-950">SIMPEG
+                            class="self-center text-[1.2rem] sm:text-xl font-bold whitespace-nowrap text-primary-950">SIMPEG
                             <span class="font-medium">RSI
                                 BANJARNEGARA</span></span>
                     </a>

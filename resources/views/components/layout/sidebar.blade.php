@@ -1,13 +1,12 @@
 <aside id="default-sidebar"
-    class="fixed top-0 left-0 z-40  w-64  h-screen transition-transform -translate-x-full sm:translate-x-0"
+    class="fixed top-0 left-0 z-50 sm:z-40 w-52  h-screen transition-transform -translate-x-full sm:translate-x-0"
     aria-label="Sidenav">
 
 
     <div
-        class="overflow-y-hidden py-3  px-3 h-full bg-primary-950  border-primary-950 dark:bg-gray-800 dark:border-gray-700">
-        <div class="flex justify-center w-100 mb-4">
+        class="overflow-y-hidden py-3 sm:py-24  px-3 h-full bg-primary-950  border-primary-950 dark:bg-gray-800 dark:border-gray-700">
+        <div class="flex sm:hidden justify-center w-100 mb-4">
             <img src="{{ asset('assets/img/logo.png') }}" class="mr-3 h-10 " alt="Logo" />
-
         </div>
         <div class="mb-5 px-2">
             <div class="font-light text-xl text-white">Selamat Pagi,</div>
