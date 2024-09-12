@@ -1,5 +1,3 @@
 <x-body>
-    <div class="text-3xl font-semibold">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi officia in
-        optio aut nesciunt
-        veritatis quisquam?</div>
+    <div class="text-3xl font-semibold">{{ fake()->paragraph(15) }}</div>
 </x-body>
