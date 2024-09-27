@@ -50,13 +50,13 @@ class Simpeg extends Migration
             $table->string('pendidikan')->nullable();
             $table->string('tgl_penyesuaian')->nullable();
             $table->string('masa_kerja')->nullable();
-            $table->string('status')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps(0);
 
             $table->foreign('jabatan_id')->references('id')->on('master_jabatan');
             $table->foreign('fungsi_id')->references('id')->on('master_fungsi');
-            $table->foreign('s_p')->references('id')->on('master_umum');
-            $table->foreign('s_a')->references('id')->on('master_umum');
+            // $table->foreign('s_p')->references('id')->on('master_umum');
+            // $table->foreign('s_a')->references('id')->on('master_umum');
             $table->foreign('trans_id')->references('id')->on('master_trans');
             $table->foreign('khusus_id')->references('id')->on('master_khusus');
             $table->foreign('user_id')->references('id')->on('users');
@@ -81,32 +81,33 @@ class Simpeg extends Migration
             $table->timestamps(0);
 
             $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('trans_id')->references('id')->on('master_trans');
+            // $table->foreign('trans_id')->references('id')->on('master_trans');
         });
 
         Schema::create('gaji_netto', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('t_bruto_id')->nullable();
+            // $table->unsignedBigInteger('employee_id');
+            // $table->unsignedBigInteger('t_bruto_id')->nullable();
             $table->unsignedBigInteger('t_pot_id')->nullable();
             $table->integer('total_netto')->nullable();
             $table->timestamps(0);
 
-            $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('t_bruto_id')->references('id')->on('gaji_bruto');
+            // $table->foreign('employee_id')->references('id')->on('employees');
+            // $table->foreign('t_bruto_id')->references('id')->on('gaji_bruto');
             $table->foreign('t_pot_id')->references('id')->on('potongan');
         });
 
         Schema::create('kenaikan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
+            // $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('gapok_id');
             $table->string('jenis_kenaikan')->nullable();
             $table->dateTime('tgl_naik')->nullable();
             $table->string('keterangan')->nullable();
+            $table->integer('status')->nullable();
             $table->timestamps(0);
 
-            $table->foreign('employee_id')->references('id')->on('employees');
+            // $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('gapok_id')->references('id')->on('master_gapok');
         });
 
@@ -213,7 +214,7 @@ class Simpeg extends Migration
 
         Schema::create('potongan', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('bruto_id');
             $table->integer('simpanan_wajib')->nullable();
             $table->integer('simpanan_pokok')->nullable();
             $table->integer('ibi')->nullable();
@@ -229,9 +230,24 @@ class Simpeg extends Migration
             $table->integer('bpjs_kes')->nullable();
             $table->timestamps(0);
 
+            $table->foreign('bruto_id')->references('id')->on('gaji_bruto');
+        });
+
+
+        Schema::create('t_umum', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('umum_id');
+            $table->string('nama')->nullable();
+            $table->timestamps(0);
+
             $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('umum_id')->references('id')->on('master_umum');
         });
     }
+
+
+
 
     /**
      * Reverse the migrations.

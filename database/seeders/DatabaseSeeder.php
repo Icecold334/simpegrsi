@@ -285,7 +285,6 @@ class DatabaseSeeder extends Seeder
             ],
         ];
 
-        // Menggunakan foreach untuk menginsert data ke dalam tabel
         foreach ($tunjanganKhusus as $tunjangan) {
             DB::table('master_khusus')->insert([
                 'nama' => $tunjangan['nama'],
@@ -293,6 +292,34 @@ class DatabaseSeeder extends Seeder
                 'deskripsi' => $tunjangan['deskripsi'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+            ]);
+        }
+
+        $gapoks = [
+            ['gol_id' => 1, 'masa_kerja' => 0, 'nominal_gapok' => 1170600],
+            ['gol_id' => 1, 'masa_kerja' => 1, 'nominal_gapok' => 1170600],
+            ['gol_id' => 1, 'masa_kerja' => 2, 'nominal_gapok' => 1207500],
+            // Add more gapoks for Ia
+            ['gol_id' => 2, 'masa_kerja' => 0, 'nominal_gapok' => 1170600],
+            ['gol_id' => 2, 'masa_kerja' => 1, 'nominal_gapok' => 1170600],
+            ['gol_id' => 2, 'masa_kerja' => 2, 'nominal_gapok' => 1278375],
+            // Add more gapoks for Ib
+            ['gol_id' => 3, 'masa_kerja' => 0, 'nominal_gapok' => 1170600],
+            ['gol_id' => 3, 'masa_kerja' => 1, 'nominal_gapok' => 1170600],
+            // Add more gapoks for Ic
+            ['gol_id' => 4, 'masa_kerja' => 0, 'nominal_gapok' => 1170600],
+            ['gol_id' => 4, 'masa_kerja' => 1, 'nominal_gapok' => 1170600],
+            // Add more gapoks for Id
+            // Continue adding gapoks for IIa to IVe as per your structure
+        ];
+
+        foreach ($gapoks as $gapok) {
+            DB::table('master_gapok')->insert([
+                'gol_id' => $gapok['gol_id'], // Reference from master_golongan
+                'masa_kerja' => $gapok['masa_kerja'],
+                'nominal_gapok' => $gapok['nominal_gapok'],
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
     }
