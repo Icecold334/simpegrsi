@@ -28,10 +28,11 @@ class Simpeg extends Migration
 
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('jabatan_id')->nullable();
+            $table->unsignedBigInteger('jabatan_id');
             $table->unsignedBigInteger('fungsi_id');
-            $table->unsignedBigInteger('umum_id');
-            $table->unsignedBigInteger('trans_id');
+            $table->unsignedBigInteger('s_p')->nullable();
+            $table->unsignedBigInteger('s_a')->nullable();
+            $table->unsignedBigInteger('trans_id')->nullable();
             $table->unsignedBigInteger('khusus_id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('gol_id');
@@ -54,7 +55,8 @@ class Simpeg extends Migration
 
             $table->foreign('jabatan_id')->references('id')->on('master_jabatan');
             $table->foreign('fungsi_id')->references('id')->on('master_fungsi');
-            $table->foreign('umum_id')->references('id')->on('master_umum');
+            $table->foreign('s_p')->references('id')->on('master_umum');
+            $table->foreign('s_a')->references('id')->on('master_umum');
             $table->foreign('trans_id')->references('id')->on('master_trans');
             $table->foreign('khusus_id')->references('id')->on('master_khusus');
             $table->foreign('user_id')->references('id')->on('users');
