@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Carbon\Carbon;
 
 class DatabaseSeeder extends Seeder
@@ -321,6 +323,89 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
+        }
+
+        $users = [
+            [
+                'name' => 'John Doe',
+                'email' => 'john.doe@example.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password123'), // Hash the password
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'name' => 'Jane Smith',
+                'email' => 'jane.smith@example.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password123'), // Hash the password
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            // Add more user records as needed
+        ];
+
+        DB::table('users')->insert($users);
+
+        $employee = [
+            [
+                'jabatan_id' => 1,
+                'fungsi_id' => 1,
+                'trans_id' => 1,
+                'khusus_id' => 1,
+                'user_id' => 1,
+                'gol_id' => 1,
+                'nama' => 'John Doe',
+                'nip' => '123456789',
+                'email' => 'john.doe@example.com',
+                'no_hp' => '081234567890',
+                'tmt' => '2022-01-01',
+                'jk' => 'L',
+                'pensiun' => null,
+                'tanggal_lahir' => '1985-05-15',
+                'alamat' => 'Jl. Contoh Alamat No. 1',
+                'pend_awal' => 1,
+                'pend_penyesuaian' => null,
+                'pendidikan' => 'S1',
+                'tgl_penyesuaian' => null,
+                'masa_kerja' => '2',
+                'status' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            // Add more employees as needed
+            [
+                'jabatan_id' => 2,
+                'fungsi_id' => 2,
+                'trans_id' => 1,
+                'khusus_id' => 2,
+                'user_id' => 2,
+                'gol_id' => 2,
+                'nama' => 'Jane Smith',
+                'nip' => '987654321',
+                'email' => 'jane.smith@example.com',
+                'no_hp' => '089876543210',
+                'tmt' => '2023-01-01',
+                'jk' => 'P',
+                'pensiun' => null,
+                'tanggal_lahir' => '1990-10-20',
+                'alamat' => 'Jl. Contoh Alamat No. 2',
+                'pend_awal' => 2,
+                'pend_penyesuaian' => null,
+                'pendidikan' => 'S2',
+                'tgl_penyesuaian' => null,
+                'masa_kerja' => '1',
+                'status' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            // Continue adding employee records as needed
+        ];
+
+        foreach ($employee as $employees) {
+            DB::table('employees')->insert($employees);
         }
     }
 }

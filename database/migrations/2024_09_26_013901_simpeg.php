@@ -30,8 +30,6 @@ class Simpeg extends Migration
             $table->id();
             $table->unsignedBigInteger('jabatan_id');
             $table->unsignedBigInteger('fungsi_id');
-            $table->unsignedBigInteger('s_p')->nullable();
-            $table->unsignedBigInteger('s_a')->nullable();
             $table->unsignedBigInteger('trans_id')->nullable();
             $table->unsignedBigInteger('khusus_id');
             $table->unsignedBigInteger('user_id');
@@ -48,15 +46,13 @@ class Simpeg extends Migration
             $table->integer('pend_awal')->nullable();
             $table->integer('pend_penyesuaian')->nullable();
             $table->string('pendidikan')->nullable();
-            $table->string('tgl_penyesuaian')->nullable();
-            $table->string('masa_kerja')->nullable();
+            $table->dateTime('tgl_penyesuaian')->nullable();
+            $table->integer('masa_kerja')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps(0);
 
             $table->foreign('jabatan_id')->references('id')->on('master_jabatan');
             $table->foreign('fungsi_id')->references('id')->on('master_fungsi');
-            // $table->foreign('s_p')->references('id')->on('master_umum');
-            // $table->foreign('s_a')->references('id')->on('master_umum');
             $table->foreign('trans_id')->references('id')->on('master_trans');
             $table->foreign('khusus_id')->references('id')->on('master_khusus');
             $table->foreign('user_id')->references('id')->on('users');
@@ -67,12 +63,11 @@ class Simpeg extends Migration
 
         Schema::create('gaji_bruto', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('absensi_id');
             $table->integer('nom_jabatan')->nullable();
             $table->integer('nom_fungsi')->nullable();
             $table->integer('nom_umum')->nullable();
             $table->integer('nom_khusus')->nullable();
-            $table->unsignedBigInteger('trans_id');
             $table->integer('nom_trans')->nullable();
             $table->integer('nom_pj_poskes')->nullable();
             $table->integer('nom_p_shift')->nullable();
@@ -80,7 +75,7 @@ class Simpeg extends Migration
             $table->integer('total_bruto')->nullable();
             $table->timestamps(0);
 
-            $table->foreign('employee_id')->references('id')->on('employees');
+            $table->foreign('absensi_id')->references('id')->on('absensi');
             // $table->foreign('trans_id')->references('id')->on('master_trans');
         });
 
@@ -250,7 +245,7 @@ class Simpeg extends Migration
 
 
     /**
-     * Reverse the migrations.
+     * Reverse the migrations
      *
      * @return void
      */
@@ -274,5 +269,6 @@ class Simpeg extends Migration
         Schema::dropIfExists('gaji_bruto');
         Schema::dropIfExists('employees');
         Schema::dropIfExists('absensi');
+        Schema::dropIfExists('t_umum');
     }
 }
