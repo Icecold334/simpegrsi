@@ -124,8 +124,8 @@ class Simpeg extends Migration
         Schema::create('master_gapok', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('gol_id');
-            $table->string('masa_kerja')->nullable();
-            $table->string('nominal_gapok')->nullable();
+            $table->integer('masa_kerja')->nullable();
+            $table->integer('nominal_gapok')->nullable();
             $table->timestamps(0);
 
             $table->foreign('gol_id')->references('id')->on('master_golongan');
@@ -233,7 +233,6 @@ class Simpeg extends Migration
             $table->id();
             $table->unsignedBigInteger('employee_id');
             $table->unsignedBigInteger('umum_id');
-            $table->string('nama')->nullable();
             $table->timestamps(0);
 
             $table->foreign('employee_id')->references('id')->on('employees');
