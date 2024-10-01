@@ -94,16 +94,16 @@ class Simpeg extends Migration
 
         Schema::create('kenaikan', function (Blueprint $table) {
             $table->id();
-            // $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('gapok_id');
+            $table->unsignedBigInteger('employee_id');
+            // $table->unsignedBigInteger('gapok_id');
             $table->string('jenis_kenaikan')->nullable();
             $table->dateTime('tgl_naik')->nullable();
             $table->string('keterangan')->nullable();
             $table->integer('status')->nullable();
             $table->timestamps(0);
 
-            // $table->foreign('employee_id')->references('id')->on('employees');
-            $table->foreign('gapok_id')->references('id')->on('master_gapok');
+            $table->foreign('employee_id')->references('id')->on('employees');
+            // $table->foreign('gapok_id')->references('id')->on('master_gapok');
         });
 
         Schema::create('log', function (Blueprint $table) {
@@ -149,6 +149,7 @@ class Simpeg extends Migration
         Schema::create('master_jam', function (Blueprint $table) {
             $table->id();
             $table->dateTime('enrty')->nullable();
+            $table->dateTime('out')->nullable();
             $table->timestamps(0);
         });
 

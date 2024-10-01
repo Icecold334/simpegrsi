@@ -1060,5 +1060,28 @@ class DatabaseSeeder extends Seeder
         ];
 
         DB::table('t_penyesuaian')->insert($t_penyesuaian);
+
+        $master_potongan = [
+            ['fungsi_id' => 1, 'nama' => 'Dokter Spesialis', 'nominal' => 25000, 'deskripsi' => 'Potongan untuk Dokter Spesialis'],
+            ['fungsi_id' => 2, 'nama' => 'Dokter Umum', 'nominal' => 20000, 'deskripsi' => 'Potongan untuk Dokter Umum'],
+            ['fungsi_id' => 3, 'nama' => 'Dokter Gigi', 'nominal' => 10000, 'deskripsi' => 'Potongan untuk Dokter Gigi'],
+            ['fungsi_id' => 6, 'nama' => 'IPCN', 'nominal' => 20000, 'deskripsi' => 'Potongan untuk IPCN'],
+            ['fungsi_id' => 7, 'nama' => 'Ners', 'nominal' => 10000, 'deskripsi' => 'Potongan untuk Ners'],
+            ['fungsi_id' => 10, 'nama' => 'Perawat Diploma', 'nominal' => 12500, 'deskripsi' => 'Potongan untuk Perawat Diploma'],
+            ['fungsi_id' => 9, 'nama' => 'Penata Anestesi', 'nominal' => 8500, 'deskripsi' => 'Potongan untuk Penata Anestesi'],
+            ['fungsi_id' => 10, 'nama' => 'Perawat Medik', 'nominal' => 8000, 'deskripsi' => 'Potongan untuk Perawat Medik'],
+            ['fungsi_id' => 11, 'nama' => 'Bidan', 'nominal' => 5000, 'deskripsi' => 'Potongan untuk Bidan'],
+        ];
+
+        foreach ($master_potongan as $mstr_pot) {
+            DB::table('master_potongan')->insert([
+                'fungsi_id' => $mstr_pot['fungsi_id'],
+                'nama' => $mstr_pot['nama'],
+                'nominal' => $mstr_pot['nominal'],
+                'deskripsi' => $mstr_pot['deskripsi'],
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ]);
+        }
     }
 }
