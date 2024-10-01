@@ -47,7 +47,7 @@ class Simpeg extends Migration
             $table->integer('pend_penyesuaian')->nullable();
             $table->string('pendidikan')->nullable();
             $table->dateTime('tgl_penyesuaian')->nullable();
-            $table->integer('masa_kerja')->nullable();
+            $table->integer('masa_kerja')->default(0);
             $table->integer('status')->nullable();
             $table->timestamps(0);
 
@@ -56,9 +56,9 @@ class Simpeg extends Migration
             $table->foreign('trans_id')->references('id')->on('master_trans');
             $table->foreign('khusus_id')->references('id')->on('master_khusus');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('gol_id')->references('id')->on('master_golongan');
+            // $table->foreign('gol_id')->references('id')->on('master_golongan');
             $table->foreign('pend_awal')->references('id')->on('master_pendidikan');
-            $table->foreign('pend_penyesuaian')->references('id')->on('master_pendidikan');
+            // $table->foreign('pend_penyesuaian')->references('id')->on('master_penyesuaian');
         });
 
         Schema::create('gaji_bruto', function (Blueprint $table) {
@@ -176,8 +176,8 @@ class Simpeg extends Migration
             $table->string('masa_kerja')->nullable();
             $table->timestamps(0);
 
-            $table->foreign('pendidikan_awal')->references('id')->on('master_pendidikan');
-            $table->foreign('pendidikan_penyesuaian')->references('id')->on('master_pendidikan');
+            // $table->foreign('pendidikan_awal')->references('id')->on('master_pendidikan');
+            // $table->foreign('pendidikan_penyesuaian')->references('id')->on('master_pendidikan');
         });
 
         Schema::create('master_potongan', function (Blueprint $table) {
@@ -238,6 +238,31 @@ class Simpeg extends Migration
             $table->foreign('employee_id')->references('id')->on('employees');
             $table->foreign('umum_id')->references('id')->on('master_umum');
         });
+
+        Schema::create('t_gapok', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('employee_id');
+            $table->unsignedBigInteger('gol_id');
+            $table->unsignedBigInteger('gapok_id');
+            $table->timestamps(0);
+
+            $table->foreign('employee_id')->references('id')->on('employees');
+            // $table->foreign('gol_id')->references('id')->on('master_golongan');
+            $table->foreign('gapok_id')->references('id')->on('master_gapok');
+        });
+
+        Schema::create('t_penyesuaian', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('employee_id');
+            // $table->unsignedBigInteger('gol_id');
+            $table->unsignedBigInteger('penyesuaian_id');
+            $table->timestamps(0);
+
+            $table->foreign('employee_id')->references('id')->on('employees');
+            // $table->foreign('gol_id')->references('id')->on('master_golongan');
+            $table->foreign('penyesuaian_id')->references('id')->on('master_penyesuaian');
+        });
+
     }
 
 
@@ -269,5 +294,7 @@ class Simpeg extends Migration
         Schema::dropIfExists('employees');
         Schema::dropIfExists('absensi');
         Schema::dropIfExists('t_umum');
+        Schema::dropIfExists('t_gapok');
+        Schema::dropIfExists('t_penyesuaian');
     }
 }

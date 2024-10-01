@@ -895,7 +895,15 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            // Add more user records as needed
+            [
+                'name' => 'Michael Johnson', // New user
+                'email' => 'michael.johnson@example.com',
+                'email_verified_at' => now(),
+                'password' => Hash::make('password123'), // Hash the password
+                'remember_token' => Str::random(10),
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         DB::table('users')->insert($users);
@@ -907,12 +915,12 @@ class DatabaseSeeder extends Seeder
                 'trans_id' => 1,
                 'khusus_id' => 1,
                 'user_id' => 1,
-                'gol_id' => 1,
+                'gol_id' => 8,
                 'nama' => 'John Doe',
                 'nip' => '123456789',
                 'email' => 'john.doe@example.com',
                 'no_hp' => '081234567890',
-                'tmt' => '2022-01-01',
+                'tmt' => '2020-01-01',
                 'jk' => 'L',
                 'pensiun' => null,
                 'tanggal_lahir' => '1985-05-15',
@@ -921,7 +929,7 @@ class DatabaseSeeder extends Seeder
                 'pend_penyesuaian' => null,
                 'pendidikan' => 'S1',
                 'tgl_penyesuaian' => null,
-                'masa_kerja' => '2',
+                'masa_kerja' => '4',
                 'status' => 1,
                 'created_at' => now(),
                 'updated_at' => now(),
@@ -933,7 +941,7 @@ class DatabaseSeeder extends Seeder
                 'trans_id' => 1,
                 'khusus_id' => 2,
                 'user_id' => 2,
-                'gol_id' => 2,
+                'gol_id' => 10,
                 'nama' => 'Jane Smith',
                 'nip' => '987654321',
                 'email' => 'jane.smith@example.com',
@@ -952,7 +960,31 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
-            // Continue adding employee records as needed
+            [
+                'jabatan_id' => 3, // New employee
+                'fungsi_id' => 3,
+                'trans_id' => 1,
+                'khusus_id' => 3,
+                'user_id' => 3,
+                'gol_id' => 7,
+                'nama' => 'Michael Johnson',
+                'nip' => '456789123',
+                'email' => 'michael.johnson@example.com',
+                'no_hp' => '081234512345',
+                'tmt' => '2024-01-01',
+                'jk' => 'L',
+                'pensiun' => null,
+                'tanggal_lahir' => '1988-08-08',
+                'alamat' => 'Jl. Contoh Alamat No. 3',
+                'pend_awal' => 8,
+                'pend_penyesuaian' => null,
+                'pendidikan' => 'S1',
+                'tgl_penyesuaian' => null,
+                'masa_kerja' => 0,
+                'status' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ];
 
         foreach ($employee as $employees) {
@@ -983,5 +1015,50 @@ class DatabaseSeeder extends Seeder
         ];
 
         DB::table('t_umum')->insert($t_umum);
+
+        $t_gapok = [
+            [
+                'employee_id' => 1,
+                'gol_id' => 8,
+                'gapok_id' => 222, // Assuming gapok_id exists
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'employee_id' => 2,
+                'gol_id' => 7,
+                'gapok_id' => 287, // Assuming gapok_id exists
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'employee_id' => 3,
+                'gol_id' => 10,
+                'gapok_id' => 183, // Assuming gapok_id exists
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Add more user records as needed
+        ];
+
+        DB::table('t_gapok')->insert($t_gapok);
+
+        $t_penyesuaian = [
+            [
+                'employee_id' => 1,
+                'penyesuaian_id' => 25,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'employee_id' => 3,
+                'penyesuaian_id' => 29,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            // Add more user records as needed
+        ];
+
+        DB::table('t_penyesuaian')->insert($t_penyesuaian);
     }
 }
