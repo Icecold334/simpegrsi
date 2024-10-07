@@ -4,7 +4,7 @@
                 <div class="flex">
                     <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
                         aria-controls="default-sidebar" type="button"
-                        class="inline-flex items-center p-2 text-md hover:text-white ml-3 me-1 transition duration-100 text-primary-950 rounded-lg sm:hidden hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
+                        class="inline-flex items-center p-2 text-md hover:text-primary-100 ml-3 me-1 transition duration-100 text-primary-950 rounded-lg sm:hidden hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-gray-200 ">
                         <span class="sr-only">Open sidebar</span>
                         <i class="fa-solid fa-bars"></i>
                     </button>

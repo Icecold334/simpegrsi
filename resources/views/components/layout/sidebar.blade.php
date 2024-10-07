@@ -6,12 +6,13 @@
             <img src="{{ asset('assets/img/logo.png') }}" class="mr-3 h-16 " alt="Logo" />
         </div>
         <div class="mb-5 px-2">
-            <div class="font-light text-xl text-white">Selamat Pagi,</div>
-            <div class="font-semibold text-xl text-white">Budiono Siregar</div>
+            <div class="font-light text-xl text-center sm:text-start text-white">Selamat Pagi,</div>
+            <div class="font-semibold text-xl text-center sm:text-start text-white">Budiono Siregar</div>
         </div>
         <ul class="space-y-2 border-t pt-4">
             <x-side-link title="Dashboard" href="#" icon="fa-solid fa-house" />
             <x-side-link title="Add User" href="#" icon="fa-solid fa-user-plus" />
+            <x-side-link title="Master Data" href="#" icon="fa-regular fa-folder-open" :child="[['title' => 'Jabatan', 'href' => '/jabatan'], ['title' => 'Karyawan', 'href' => '#']]" />
             <x-side-link title="Kepegawaian" icon="fa-solid fa-people-group" :child="[
                 ['title' => 'Data Karyawan', 'href' => '#'],
                 ['title' => 'Tunjangan', 'href' => '#'],
