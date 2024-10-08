@@ -12,7 +12,17 @@
         <ul class="space-y-2 border-t pt-4">
             <x-side-link title="Dashboard" href="#" icon="fa-solid fa-house" />
             <x-side-link title="Add User" href="#" icon="fa-solid fa-user-plus" />
-            <x-side-link title="Master Data" href="#" icon="fa-regular fa-folder-open" :child="[['title' => 'Jabatan', 'href' => '/jabatan'], ['title' => 'Karyawan', 'href' => '#']]" />
+            <x-side-link title="Master Data" href="#" icon="fa-regular fa-address-book" :child="[
+                ['title' => 'Tunjangan Jabatan', 'href' => '/jabatan'],
+                ['title' => 'Tunjangan Fungsional', 'href' => '#'],
+                ['title' => 'Tunjangan Khusus', 'href' => '#'],
+                ['title' => 'Tunjangan Umum', 'href' => '#'],
+                ['title' => 'Tunjangan Transport', 'href' => '#'],
+                ['title' => 'Golongan', 'href' => '#'],
+                ['title' => 'Gaji Pokok', 'href' => '#'],
+                ['title' => 'Pendidikan', 'href' => '#'],
+                ['title' => 'Jam', 'href' => '#'],
+            ]" />
             <x-side-link title="Kepegawaian" icon="fa-solid fa-people-group" :child="[
                 ['title' => 'Data Karyawan', 'href' => '#'],
                 ['title' => 'Tunjangan', 'href' => '#'],

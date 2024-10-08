@@ -875,6 +875,11 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now(),
             ]);
         }
+        
+        DB::table('roles')->insert(['name' => 'admin']);
+        DB::table('roles')->insert(['name' => 'keuangan']);
+        DB::table('roles')->insert(['name' => 'kepegawaian']);
+        DB::table('roles')->insert(['name' => 'staff']);
 
         $users = [
             [
@@ -885,6 +890,7 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role_id'=>1,
             ],
             [
                 'name' => 'Jane Smith',
@@ -894,6 +900,7 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role_id'=>2,
             ],
             [
                 'name' => 'Michael Johnson', // New user
@@ -903,6 +910,7 @@ class DatabaseSeeder extends Seeder
                 'remember_token' => Str::random(10),
                 'created_at' => now(),
                 'updated_at' => now(),
+                'role_id'=>3,
             ],
         ];
 
